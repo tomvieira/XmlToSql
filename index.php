@@ -91,6 +91,9 @@
          * 
          *  SELECT max(length(usuace)) FROM soc.aceage;
             ALTER TABLE soc.aceage MODIFY COLUMN usuace VARCHAR(6);
+         * SELECT table_name FROM information_schema.tables WHERE table_schema = 'soc';
+
+            SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'aceage';
          */
         
         
