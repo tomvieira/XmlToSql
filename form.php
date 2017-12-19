@@ -27,7 +27,7 @@ if (isset($_POST['send'])) {
         mysqli_options($con, MYSQLI_OPT_LOCAL_INFILE, true);
         mysqli_real_connect($con, $address, $user, $pass);                        
 
-        $diretorio_arquivos = '/home/tom/Downloads/BASE SOC/consulta';
+        $diretorio_arquivos = '/home/tom/Downloads/BASE SOC';
 
         function createDatabase($connection) {
             $apagar_banco = 'DROP DATABASE IF EXISTS soc;';
@@ -114,9 +114,9 @@ if (isset($_POST['send'])) {
         }
 
         //createDatabase($con);
-        //createDatabaseStructure($con, $diretorio_arquivos);
-        //ajustarTabelas($con);
+        //createDatabaseStructure($con, $diretorio_arquivos);        
         //populateDatabase($con, $diretorio_arquivos);
+        //ajustarTabelas($con);
 
 
         /*
