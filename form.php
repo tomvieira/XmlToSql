@@ -25,7 +25,7 @@ if (isset($_POST['send'])) {
         
         $con = mysqli_init();
         mysqli_options($con, MYSQLI_OPT_LOCAL_INFILE, true);
-        mysqli_real_connect($con, $address, $user, $pass);                        
+        mysqli_real_connect($con, $address, $user, $pass);                 
 
         $diretorio_arquivos = '/home/tom/Downloads/BASE SOC';
 
@@ -43,7 +43,7 @@ if (isset($_POST['send'])) {
         function generateCreateTable($xmlName, $diretorio) {
             $xmlNameArray = explode('.', $xmlName);
             $sql = "create table soc.{$xmlNameArray[0]} (\n";
-            $reader = new XMLReader;
+            $reader = new XMLReader();
             $reader->open($diretorio . '/' . $xmlName);
             while ($reader->read()) {
                 if ($reader->name == "record") {
@@ -70,7 +70,7 @@ if (isset($_POST['send'])) {
             foreach ($xmls as $xml) {
                 $xmlNameArray = explode('.', $xml);
                 $file = $diretorio . '/' . $xml;
-                $command = "LOAD XML LOCAL INFILE '{$file}' INTO TABLE soc.{$xmlNameArray[0]} ROWS IDENTIFIED BY '<record>';";
+                $command = "LOAD XML LOCAL INFILE '{$file}' INTO TABLE soc.{$xmlNameArray[0]}  CHARACTER SET latin1 ROWS IDENTIFIED BY '<record>';";
                 echo $command;
                 if (mysqli_query($connection, $command)) {
                     echo "Tabela {$xmlNameArray[0]} importada com sucesso!<br/>";
@@ -114,9 +114,9 @@ if (isset($_POST['send'])) {
         }
 
         //createDatabase($con);
-        //createDatabaseStructure($con, $diretorio_arquivos);        
-        //populateDatabase($con, $diretorio_arquivos);
-        //ajustarTabelas($con);
+        createDatabaseStructure($con, $diretorio_arquivos);        
+        populateDatabase($con, $diretorio_arquivos);
+        ajustarTabelas($con);
 
 
         /*
